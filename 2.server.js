@@ -10,6 +10,6 @@ var wait = function(request,response){
     response.end();//结束
 }
 //当有客户端连接到来的时候，调用wait函数
-server.addEventListener('request',wait);
+server.on('request',wait);
 //开门营业
 server.listen(8080,'localhost');

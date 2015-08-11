@@ -7,7 +7,7 @@ http.createServer(function(request,response){
   var pathname = urls[0];
   var query = urls[1]?urls[1]:'';
   if(pathname == '/'){
-      fs.readFile('./post.html','utf8',function(err,data){
+      fs.readFile('./ajax.html','utf8',function(err,data){
           response.end(data);
       })
   }else if(pathname == '/addUser'){

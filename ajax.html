@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>添加用户</title>
+</head>
+<body>
+    用户名<input type="text" name="username" id="username"/>
+    密码<input type="password" name="password" id="password"/>
+    邮箱<input type="text" name="email"/>
+    <input type="button" value="提交" id="btnOk" />
+<div >
+    <ul id="userList">
+
+    </ul>
+</div>
+<script>
+    document.getElementById('btnOk').addEventListener('click',function(){
+        var xhr = new XMLHttpRequest();//创建对象
+        xhr.open('post','/addUser');//以何种方式向那个资源发起请求
+        xhr.onreadystatechange = function(){
+            //xhr 完全就绪  服务器正常返回
+            if(this.readyState == 4 && this.status == 200){
+                var userList = JSON.parse(this.responseText);
+                var ul = document.getElementById('userList');
+                for(var i=0;i<userList.length;i++){
+                    var li = document.createElement('li');
+                    li.innerHTML = userList[i].username;
+                    ul.appendChild(li);
+                }
+            }
+        }
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        xhr.send('username='+username+'&password='+password);
+    });
+</script>
+</body>
+</html>

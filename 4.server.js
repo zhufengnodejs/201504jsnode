@@ -1,6 +1,6 @@
 //店铺样板 开店指南
 var http = require('http');
-var menu = '';
+
 //装修开店 创建自己的服务器
 var server = http.createServer();
 // 请求 响应
@@ -26,8 +26,8 @@ var wait = function(request,response){
         response.end('鱼香肉丝');
     }else if(path == '/chicken'){
         response.end('宫爆鸡丁');
-    }else{
-        response.end(menu);//结束
+    }else if(path == '/'){
+        
     }
 
 }

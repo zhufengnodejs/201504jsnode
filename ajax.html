@@ -16,7 +16,7 @@
 </div>
 <script>
     document.getElementById('btnOk').addEventListener('click',function(){
-        var xhr = new XMLHttpRequest();//创建对象
+        var xhr = new XMLHttpRequest();//创建ajax对象
         xhr.open('post','/addUser');//以何种方式向那个资源发起请求
         xhr.onreadystatechange = function(){
             //xhr 完全就绪  服务器正常返回

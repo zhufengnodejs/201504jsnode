@@ -1,6 +1,7 @@
 var http = require('http');
 var fs = require('fs');
 var util = require('./util/util.js');
+var mime = require('mime');
 var users = [];//存放所有的用户
 http.createServer(function(request,response){
   var urls = request.url.split('?'); //
@@ -24,6 +25,7 @@ http.createServer(function(request,response){
 
   }else{
       //  ./public/style.css
+      response.setHeader('Content-Type',mime.lookup(pathname));
       fs.readFile('./public'+pathname,function(err,data){
           if(err){
               response.statusCode = 404;
